@@ -1,0 +1,1 @@
+# go-builder-generator-idea-plugin
