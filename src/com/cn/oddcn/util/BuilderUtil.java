@@ -14,13 +14,13 @@ public class BuilderUtil {
             String structName = structEntity.structName;
             String lowerStructName = toLowerCase(structEntity.structName);
 
-            strBuilder.append("// ");
+            strBuilder.append("\n\n// ");
             strBuilder.append(structName);
             strBuilder.append(" Builder pattern code\n");
 
             strBuilder.append("type ");
             strBuilder.append(structName);
-            strBuilder.append("Builder struct {\n    params *");
+            strBuilder.append("Builder struct {\n\tparams *");
             strBuilder.append(structName);
             strBuilder.append("\n}\n\n");
 
@@ -28,18 +28,17 @@ public class BuilderUtil {
             strBuilder.append(structName);
             strBuilder.append("Builder() *");
             strBuilder.append(structName);
-            strBuilder.append("Builder {\n");
-            strBuilder.append("    ");
+            strBuilder.append("Builder {\n\t");
             strBuilder.append(lowerStructName);
             strBuilder.append(" := &");
             strBuilder.append(structName);
-            strBuilder.append("{}\n    ");
+            strBuilder.append("{}\n\t");
             strBuilder.append(lowerStructName);
             strBuilder.append("Builder := &");
             strBuilder.append(structName);
             strBuilder.append("Builder{params: ");
             strBuilder.append(lowerStructName);
-            strBuilder.append("}\n    return ");
+            strBuilder.append("}\n\treturn ");
             strBuilder.append(lowerStructName);
             strBuilder.append("\n}\n\n");
 
@@ -58,16 +57,16 @@ public class BuilderUtil {
                 strBuilder.append(typeName);
                 strBuilder.append(") *");
                 strBuilder.append(structName);
-                strBuilder.append("Builder {\n    b.params.");
+                strBuilder.append("Builder {\n\tb.params.");
                 strBuilder.append(keyName);
                 strBuilder.append(" = ");
                 strBuilder.append(lowerKeyName);
-                strBuilder.append("\n    return b\n}\n\n");
+                strBuilder.append("\n\treturn b\n}\n\n");
             }
 
             strBuilder.append("func (b *");
             strBuilder.append(structName);
-            strBuilder.append("Builder) Build() {\n    return\n}\n\n");
+            strBuilder.append("Builder) Build() {\n\treturn\n}\n");
         }
         return strBuilder.toString();
     }
