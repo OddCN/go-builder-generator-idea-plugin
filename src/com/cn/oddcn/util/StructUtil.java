@@ -2,6 +2,7 @@ package com.cn.oddcn.util;
 
 import com.cn.oddcn.entity.StructEntity;
 import com.cn.oddcn.entity.StructGenerateResult;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,9 @@ import java.util.regex.Pattern;
 public class StructUtil {
 
     public static StructGenerateResult generateStruct(String selectedText) {
+        if (StringUtils.isBlank(selectedText)) {
+            return new StructGenerateResult("The text selected is blank", null);
+        }
 
         String[] lines = selectedText.split(System.getProperty("line.separator"));
 
@@ -37,7 +41,6 @@ public class StructUtil {
             str = lines[i];
 
             if (contentPattern.matcher(str).find()) {
-                System.out.println("content : " + str);
                 continue;
             }
 
@@ -45,20 +48,17 @@ public class StructUtil {
             if (structMatcher.find()) {
                 String structName = structMatcher.group(1);
                 StructEntity structEntity = new StructEntity(structName);
-                System.out.println("struct name : " + structName);
 
                 i++;
                 for (; i < lines.length; i++) {
                     str = lines[i];
 
                     if (contentPattern.matcher(str).find()) {
-                        System.out.println("content : " + str);
                         continue;
                     }
 
                     Matcher keyMatcher = keyPattern.matcher(str);
                     if (keyMatcher.find()) {
-                        System.out.println("key : " + keyMatcher.group(1) + ", type : " + keyMatcher.group(2));
                         structEntity.structKeyValue.put(keyMatcher.group(1), keyMatcher.group(2));
                     }
 
@@ -68,6 +68,9 @@ public class StructUtil {
                     }
                 }
             }
+        }
+        if (structEntityList.isEmpty()) {
+            return new StructGenerateResult("No complete struct in the selected text", null);
         }
         return new StructGenerateResult("", structEntityList);
     }
