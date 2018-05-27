@@ -1,40 +1,42 @@
 <idea-plugin>
-  <id>com.your.company.unique.plugin.id</id>
-  <name>Plugin display name here</name>
-  <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.cn.oddcn.plugin.gobuildergenerator</id>
+    <name>Go Builder Generator</name>
+    <version>0.1</version>
+    <vendor email="oddcn.zheng@gmail.com" url="https://github.com/OddCN/go-builder-generator-idea-plugin">Junqiu Zheng
+    </vendor>
 
-  <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    <description><![CDATA[
+      Plugin for generating Builder pattern code of Go struct from selected struct code.
     ]]></description>
 
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    <change-notes><![CDATA[
+<html>
+  <b>0.1</b> (5/27/2018)
+  <ul>
+    <li>Added support for generating multiple builder pattern code for struct at once</li>
+    <li>Added support for scrolling to the code when code is generated./li>
+  </ul>
+</html>
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="173.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <depends>com.intellij.modules.lang</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action id="Go.BuilderGenerator" class="com.cn.oddcn.GoBuilderGeneratorAction" text="Generate Go Builder Pattern Code"
-            description="Generate Builder pattern code for Go">
-      <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="Generate"/>
-      <keyboard-shortcut keymap="$default" first-keystroke="alt B"/>
-    </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="Go.BuilderGenerator" class="com.cn.oddcn.GoBuilderGeneratorAction"
+                text="Generate Go Builder Pattern Code"
+                description="Generate Builder pattern code for Go">
+            <add-to-group group-id="CodeMenu" anchor="after" relative-to-action="Generate"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt B"/>
+        </action>
+    </actions>
 
 </idea-plugin>
