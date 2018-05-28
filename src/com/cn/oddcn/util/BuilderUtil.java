@@ -16,11 +16,13 @@ public class BuilderUtil {
 
             strBuilder.append("\n\n// ");
             strBuilder.append(structName);
-            strBuilder.append(" Builder pattern code\n");
+            strBuilder.append(" builder pattern code\n");
 
             strBuilder.append("type ");
             strBuilder.append(structName);
-            strBuilder.append("Builder struct {\n\tparams *");
+            strBuilder.append("Builder struct {\n\t");
+            strBuilder.append(lowerStructName);
+            strBuilder.append(" *");
             strBuilder.append(structName);
             strBuilder.append("\n}\n\n");
 
@@ -32,15 +34,13 @@ public class BuilderUtil {
             strBuilder.append(lowerStructName);
             strBuilder.append(" := &");
             strBuilder.append(structName);
-            strBuilder.append("{}\n\t");
-            strBuilder.append(lowerStructName);
-            strBuilder.append("Builder := &");
+            strBuilder.append("{}\n\tb := &");
             strBuilder.append(structName);
-            strBuilder.append("Builder{params: ");
+            strBuilder.append("Builder{");
             strBuilder.append(lowerStructName);
-            strBuilder.append("}\n\treturn ");
+            strBuilder.append(": ");
             strBuilder.append(lowerStructName);
-            strBuilder.append("\n}\n\n");
+            strBuilder.append("}\n\treturn b\n}\n\n");
 
             for (Map.Entry<String, String> entry : structEntity.structKeyValue.entrySet()) {
                 String keyName = entry.getKey();
@@ -48,8 +48,7 @@ public class BuilderUtil {
                 String typeName = entry.getValue();
                 strBuilder.append("func (b *");
                 strBuilder.append(structName);
-                strBuilder.append("Builder");
-                strBuilder.append(") ");
+                strBuilder.append("Builder) ");
                 strBuilder.append(keyName);
                 strBuilder.append("(");
                 strBuilder.append(lowerKeyName);
@@ -57,7 +56,9 @@ public class BuilderUtil {
                 strBuilder.append(typeName);
                 strBuilder.append(") *");
                 strBuilder.append(structName);
-                strBuilder.append("Builder {\n\tb.params.");
+                strBuilder.append("Builder {\n\tb.");
+                strBuilder.append(lowerStructName);
+                strBuilder.append(".");
                 strBuilder.append(keyName);
                 strBuilder.append(" = ");
                 strBuilder.append(lowerKeyName);
@@ -66,7 +67,12 @@ public class BuilderUtil {
 
             strBuilder.append("func (b *");
             strBuilder.append(structName);
-            strBuilder.append("Builder) Build() {\n\treturn\n}\n");
+            strBuilder.append("Builder) Build() (*");
+            strBuilder.append(structName);
+            strBuilder.append(", error) {\n\treturn b.");
+            strBuilder.append(lowerStructName);
+            strBuilder.append(", nil\n}\n\n");
+
         }
         return strBuilder.toString();
     }

@@ -6,22 +6,26 @@
     </vendor>
 
     <description><![CDATA[
-      Plugin for generating Builder pattern code of Go struct from selected struct code.
+      Plugin for generating Builder pattern code of Go struct from selected struct code.<br/>
+      Demo and source code is <a href="https://github.com/OddCN/go-builder-generator-idea-plugin">here</a>.<br/>
+      How to use:<br/>
+      1. select the struct code<br/>
+      2. shortcut: Alt + B
     ]]></description>
 
     <change-notes><![CDATA[
 <html>
-  <b>0.1</b> (5/27/2018)
+  <b>v0.1</b> (5/27/2018)
   <ul>
     <li>Added support for generating multiple builder pattern code for struct at once</li>
-    <li>Added support for scrolling to the code when code is generated./li>
+    <li>Added support for scrolling to the code when code is generated.</li>
   </ul>
 </html>
     ]]>
     </change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="173.0"/>
+    <idea-version since-build="162"/>
 
     <depends>com.intellij.modules.lang</depends>
 
