@@ -29,7 +29,7 @@ public class StructUtil {
         Pattern structPattern = Pattern.compile(structRegex);
 
         // match struct key
-        String keyRegex = "^\\s*(\\w+)\\s+(\\w+)";
+        String keyRegex = "^\\s*(\\w+)\\s+([^.\\s]+)";
         Pattern keyPattern = Pattern.compile(keyRegex);
 
         // match end of struct
