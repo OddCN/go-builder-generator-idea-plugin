@@ -1,6 +1,6 @@
 # GoBuilderGenerator
 
-Plugin for generating Builder pattern code of Go struct from selected struct code.
+IntelliJ IDEA / GoLand plugin for generating Builder pattern code of Go struct from selected struct code.
 
 ## How to install
 
@@ -25,15 +25,15 @@ _or_
 
 ```
 type CreateDisk struct {
-	RegionID     string //required for creating CreateDisk struct
-	ZoneID       string //required for creating CreateDisk struct
-	DiskName     string
-	Description  string
-	Encrypted    bool
-	DiskCategory string
-	Size         int
-	SnapshotID   string
-	ClientToken  string
+    RegionID     string //required for creating CreateDisk struct
+    ZoneID       string //required for creating CreateDisk struct
+    DiskName     string
+    Description  string
+    Encrypted    bool
+    DiskCategory string
+    Size         int
+    SnapshotID   string
+    ClientToken  string
 }
 ```
 
@@ -48,27 +48,27 @@ type CreateDisk struct {
 
 // CreateDisk builder pattern code
 type CreateDiskBuilder struct {
-	createDisk *CreateDisk
+    createDisk *CreateDisk
 }
 ```
 
 ```
 func NewCreateDiskBuilder() *CreateDiskBuilder {
-	createDisk := &CreateDisk{}
-	b := &CreateDiskBuilder{createDisk: createDisk}
-	return b
+    createDisk := &CreateDisk{}
+    b := &CreateDiskBuilder{createDisk: createDisk}
+    return b
 }
 ```
 
 ```
 func (b *CreateDiskBuilder) RegionID(regionID string) *CreateDiskBuilder {
-	b.createDisk.RegionID = regionID
-	return b
+    b.createDisk.RegionID = regionID
+    return b
 }
 
 func (b *CreateDiskBuilder) ZoneID(zoneID string) *CreateDiskBuilder {
-	b.createDisk.ZoneID = zoneID
-	return b
+    b.createDisk.ZoneID = zoneID
+    return b
 }
 
 .
@@ -76,30 +76,30 @@ func (b *CreateDiskBuilder) ZoneID(zoneID string) *CreateDiskBuilder {
 .
 
 func (b *CreateDiskBuilder) ClientToken(clientToken string) *CreateDiskBuilder {
-	b.createDisk.ClientToken = clientToken
-	return b
+    b.createDisk.ClientToken = clientToken
+    return b
 }
 ```
 
 ```
 func (b *CreateDiskBuilder) Build() (*CreateDisk, error) {
     // May miss required parameters
-	return b.createDisk, nil
+    return b.createDisk, nil
 }
 ```
 
-#### Use it
+#### When we use it
 
 ```
 createDisk, err := NewCreateDiskBuilder().
-	DiskName("test name").
-	Description("desc").
-	Size(20).
-	SnapshotID("").
-	Build()
+    DiskName("test name").
+    Description("desc").
+    Size(20).
+    SnapshotID("").
+    Build()
 if err != nil {
-	// May miss required parameters
-	return
+    // May miss required parameters
+    return
 }
 // Do something with createDisk
 ```
