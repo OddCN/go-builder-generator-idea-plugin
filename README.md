@@ -21,7 +21,7 @@ _or_
 
 ## Demo
 
-If we have a struct like this:
+#### If we have a struct like this:
 
 ```
 type CreateDisk struct {
@@ -35,10 +35,9 @@ type CreateDisk struct {
 	SnapshotID   string
 	ClientToken  string
 }
-
 ```
 
-After generated, we got
+#### After generated, we got
 
 - `type CreateDiskBuilder struct ` for storing *CreateDisk
 - `func NewCreateDiskBuilder()` for creating a builder
@@ -89,18 +88,18 @@ func (b *CreateDiskBuilder) Build() (*CreateDisk, error) {
 }
 ```
 
-Use it
+#### Use it
 
 ```
 createDisk, err := NewCreateDiskBuilder().
-		DiskName("test name").
-		Description("desc").
-		Size(20).
-		SnapshotID("").
-		Build()
-	if err != nil {
-		// May miss required parameters
-		return
-	}
-	// Do something with createDisk
+	DiskName("test name").
+	Description("desc").
+	Size(20).
+	SnapshotID("").
+	Build()
+if err != nil {
+	// May miss required parameters
+	return
+}
+// Do something with createDisk
 ```
