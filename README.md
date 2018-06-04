@@ -8,7 +8,7 @@ IntelliJ IDEA / GoLand plugin for generating Builder pattern code of Go struct f
 
 _or_
 
-- download it and install via `Settings/Preferences → Plugins → Install plugin from disk`
+- [download it](https://plugins.jetbrains.com/plugin/10783-go-builder-generator) and install via `Settings/Preferences → Plugins → Install plugin from disk`
 
 
 ## How to use it
