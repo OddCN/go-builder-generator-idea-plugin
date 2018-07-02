@@ -79,7 +79,9 @@ public class BuilderUtil {
 
     private static String toLowerCase(String str) {
         char[] cs = str.toCharArray();
-        cs[0] += 32;
+        if (Character.isUpperCase(cs[0])) {
+            cs[0] += 32;
+        }
         return String.valueOf(cs);
     }
 }

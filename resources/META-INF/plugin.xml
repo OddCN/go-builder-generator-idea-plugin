@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.cn.oddcn.plugin.gobuildergenerator</id>
     <name>Go Builder Generator</name>
-    <version>1.1</version>
+    <version>1.1.1</version>
     <vendor email="oddcn.zheng@gmail.com" url="https://github.com/OddCN/go-builder-generator-idea-plugin">Junqiu Zheng
     </vendor>
 
@@ -15,6 +15,10 @@
 
     <change-notes><![CDATA[
 <html>
+  <b>v1.1.1</b> (7/2/2018)
+  <ul>
+    <li>Fixed a bug when changing uppercase to lowercase</li>
+  </ul>
   <b>v1.1</b> (5/28/2018)
   <ul>
     <li>Added support for generating multiple builder pattern code for struct at once</li>
